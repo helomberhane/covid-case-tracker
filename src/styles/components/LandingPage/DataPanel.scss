@@ -1,0 +1,100 @@
+.data_panel___container {
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  height: 100%;
+  left: 10px;
+  top: 60px;
+  position:fixed;
+  z-index: 1;
+  padding: 0px 24px;
+}
+
+.data_panel___main_header {
+  font-size: 34px;
+  font-weight: 600;
+  padding-top: 24px;
+  margin-bottom: 24px;
+}
+
+.data_panel___header {
+  margin: 0px;
+  font-size: 20px;
+  text-align: left;
+}
+
+.data_panel___value {
+  margin: 2px 0px 8px 2px;
+}
+
+.data_panel___total_cases_container {
+  background-color: rgba(255, 0, 0, 0.4);
+  border: 1px solid black;
+  height: 52px;
+  margin-bottom: 20px;
+  padding: 10px 6px 0px 6px;
+}
+
+.data_panel___total_header_container {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid black;
+}
+
+.data_panel___total_cases_header {
+  font-size: 24px;
+}
+
+.data_panel___total_cases_value {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.data_panel___total_cases_header {
+  font-size: 24px;
+}
+
+.data_panel___total_recovered_header {
+  color: #228b22;
+}
+
+.data_panel___total_hospitalized_header {
+  color: #ff8000;
+}
+
+.data_panel___total_isolated_header {
+  color: grey;
+}
+
+.data_panel___total_deceased_header {
+  color: #ff0000;
+}
+
+.data_panel___table_container_header {
+  padding-top: 20px;
+}
+
+.data_panel___table_container {
+  height: 271px;
+  overflow-y: scroll;
+}
+
+.data_panel___table {
+  height: 100%;
+  overflow-y: scroll;
+  width: 100%;
+  border: 1px solid lightgray;
+
+  th {
+    border: 1px solid lightgray;
+    padding-left: 10px;
+  }
+
+  tr {
+    border: 1px solid lightgray;
+  }
+
+  td {
+    border: 1px solid lightgray;
+    padding-left: 10px;
+  }
+}
