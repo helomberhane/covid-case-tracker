@@ -47,3 +47,19 @@
 .region_details__total_case_table_entry {
   font-weight: 600;
 }
+
+.region_details__table_row_recovered {
+  color: #228b22;
+}
+
+.region_details__table_row_hospitalized {
+  color: #ff8000;
+}
+
+.region_details__table_row_isolated {
+  color: grey;
+}
+
+.region_details__table_row_deceased {
+  color: #ff0000;
+}

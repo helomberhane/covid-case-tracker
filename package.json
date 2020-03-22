@@ -8,7 +8,7 @@
     "dotenv": "^8.2.0",
     "google-maps-react": "^2.0.2",
     "lodash": "^4.17.15",
-    "mathjs": "^6.6.1",
+    "moment": "^2.24.0",
     "node-sass": "^4.12.0",
     "react": "^16.9.0",
     "react-bootstrap": "^1.0.0-beta.17",
@@ -20,13 +20,17 @@
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
-    "react-scripts": "^3.4.0"
+    "react-scripts": "^3.4.0",
+    "webpack-cli": "^3.3.11"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "update-s3": "react-scripts build --mode production && aws s3 sync build/ s3://ethiopiacovidtracker-testdashboard",
+    "invalidate": "aws cloudfront create-invalidation --distribution-id E1K4THP97OX4X9 --paths '/*'",
+    "deploy": "react-scripts build --mode production && aws s3 sync --acl public-read --delete build/ s3://ethiopiacovidtracker-testdashboard && npm run invalidate"
   },
   "eslintConfig": {
     "extends": "react-app"

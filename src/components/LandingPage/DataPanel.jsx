@@ -4,6 +4,7 @@ import { Row, Col } from 'react-bootstrap'
 import { bindActionCreators } from 'redux'
 import classNames from 'classnames'
 import _map from 'lodash/map'
+import moment from 'moment'
 
 
 class DataPanel extends Component {
@@ -35,15 +36,12 @@ class DataPanel extends Component {
         'data_panel___total_deceased_header': true,
     })
 
-    const totalHeaderContainerClasses = classNames({
-        'data_panel___total_header_container': true,
-    })
-
     const topRegions = _map(topFiveRegions, (regionRecord, index) => {
       return (
         <tr key={index}>
           <td className="data_panel___table_row">{ regionRecord.name }</td>
           <td className="data_panel___table_row">{ regionRecord.totalCases }</td>
+          <td className="data_panel___table_row">{ regionRecord.firstCase ? moment(regionRecord.firstCase).format("MM/DD/YYYY") : "N/A" }</td>
         </tr>
       )
     })
@@ -53,7 +51,7 @@ class DataPanel extends Component {
         <Col xs={4} className="data_panel___container">
           <h1 className="data_panel___main_header">Ethiopia COVID-19 Tracker</h1>
           {
-            loading && (loading == true) ?
+            loading && (loading === true) ?
               <p>Loading...</p>
             :
               (
@@ -117,6 +115,7 @@ class DataPanel extends Component {
                             <tr>
                               <th className="data_panel___table_header">Woreda</th>
                               <th className="data_panel___table_header">Cases</th>
+                              <th className="data_panel___table_header">First Case</th>
                             </tr>
                           </thead>
                           <tbody>

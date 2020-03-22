@@ -98,3 +98,8 @@
     padding-left: 10px;
   }
 }
+
+#root > div > div > div:nth-child(3) > div.map___container > div > div > div > div:nth-child(11) > div:nth-child(1) > div:nth-child(1) {
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 0px -1px;
+  border-bottom: 0px;
+}

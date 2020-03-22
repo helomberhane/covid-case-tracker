@@ -2,14 +2,12 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Row, Col } from 'react-bootstrap'
 import { bindActionCreators } from 'redux'
-import { Map, Polygon, Polyline, GoogleApiWrapper } from 'google-maps-react'
+import { Polygon } from 'google-maps-react'
 import _map from 'lodash/map'
 import _forEach from 'lodash/forEach'
 import _filter from 'lodash/filter'
 import _find from 'lodash/find'
 import _orderBy from 'lodash/orderBy'
-import round from 'mathjs'
-import classNames from 'classnames'
 
 import administrativeZoneDataAll from '../../data/ethiopia_administrative_zones_full.json'
 
@@ -30,7 +28,7 @@ function roundValue(value, decimals) {
 }
 
 function polygonColor(count) {
-  if (count == 0) {
+  if (count === 0) {
     return POLYGON_COLORS[0]
   }
 
@@ -48,7 +46,6 @@ function transformDataForGoogleMaps(latLongData) {
 }
 
 function createNewRegionRecord(data) {
-  // updating for camelcase
   return {
     adminRegion3Id: data.properties.ID_3,
     name: data.properties.NAME_3,
@@ -57,6 +54,7 @@ function createNewRegionRecord(data) {
     totalHospitalized: 0,
     totalIsolated: 0,
     totalDeceased: 0,
+    firstCase: null,
   }
 }
 
@@ -87,7 +85,6 @@ class Home extends Component {
   componentDidMount() {
     const { getCaseRecords } = this.props
     getCaseRecords()
-    console.log(process.env.GOOGLE_MAPS_API_KEY);
   }
   showRegionDetails(regionId) {
     let currentRegionRecord = _find(regionRecords, { 'adminRegion3Id': regionId })
@@ -97,7 +94,7 @@ class Home extends Component {
     })
   }
   render() {
-    const { loading, getCaseRecords, caseRecords } = this.props
+    const { loading, caseRecords } = this.props
 
     const centerPoint = {
      lat: 9.1606,
@@ -120,12 +117,9 @@ class Home extends Component {
         let caseRecordsForRegionIsolated = _filter(caseRecordsForRegion, { 'status': 'isolated' })
         let caseRecordsForRegionDeceased = _filter(caseRecordsForRegion, { 'status': 'deceased' })
 
-        if (caseRecordsForRegion.length > 0) {
-          console.log(caseRecordsForRegion);
-          console.log(caseRecordsForRegionRecovered);
-          console.log(caseRecordsForRegionHospitalized);
-          console.log(caseRecordsForRegionIsolated);
-          console.log(caseRecordsForRegionDeceased);
+        let firstCase = _orderBy(caseRecordsForRegion, ['date_reported', 'name'], ['asc', 'desc'])[0]
+        if (firstCase) {
+          regionRecord.firstCase = firstCase.date_reported
         }
         regionRecord.totalRecovered = caseRecordsForRegionRecovered.length
         regionRecord.totalHospitalized = caseRecordsForRegionHospitalized.length
@@ -141,7 +135,7 @@ class Home extends Component {
         regionRecord.totalCases = caseRecordsForRegion.length
       })
 
-      topFiveRegions = _orderBy(regionRecords, ['totalCases'], ['desc']).slice(0, 20)
+      topFiveRegions = _orderBy(regionRecords, ['totalCases', 'name'], ['desc', 'asc']).slice(0, 20)
     }
 
     var regionOverlays = []

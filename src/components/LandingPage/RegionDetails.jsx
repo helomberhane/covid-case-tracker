@@ -12,7 +12,7 @@ class RegionDetails extends Component {
         <Col xs={3} className="region_details___container">
           <Row>
             <Col xs={12}>
-              <h1 className="region_details__name_header">{ regionRecord.name }</h1>
+              <h2 className="region_details__name_header">{ regionRecord.name }</h2>
             </Col>
           </Row>
           <Row>
@@ -27,19 +27,19 @@ class RegionDetails extends Component {
                   </thead>
                   <tbody>
                     <tr>
-                      <td>Recovered</td>
+                      <td className="region_details__table_row_recovered">Recovered</td>
                       <td>{ regionRecord.totalRecovered }</td>
                     </tr>
                     <tr>
-                      <td>Hospitalized</td>
+                      <td className="region_details__table_row_hospitalized">Hospitalized</td>
                       <td>{ regionRecord.totalHospitalized }</td>
                     </tr>
                     <tr>
-                      <td>Isolated</td>
+                      <td className="region_details__table_row_isolated">Isolated</td>
                       <td>{ regionRecord.totalIsolated }</td>
                     </tr>
                     <tr>
-                      <td>Deceased</td>
+                      <td className="region_details__table_row_deceased">Deceased</td>
                       <td>{ regionRecord.totalDeceased }</td>
                     </tr>
                     <tr className="region_details__total_case_table_row">

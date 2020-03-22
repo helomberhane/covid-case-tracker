@@ -1,28 +1,14 @@
 import React, { Component } from 'react'
 import { Map, GoogleApiWrapper } from 'google-maps-react'
-import classNames from 'classnames'
 
 export class MapContainer extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      showMarker: false,
-    }
-  }
-  componentDidMount(props) {
-  }
   render() {
-    const { centerCoordinates, howMarker, polygons } = this.props
-
-    var mapContainerClasses = classNames({
-        'map___container': true,
-    })
+    const { centerCoordinates, polygons } = this.props
 
     return (
       <Map
         google={this.props.google}
-        className={mapContainerClasses}
+        className="map___container"
         initialCenter={centerCoordinates}
         zoom={6.52}
       >
