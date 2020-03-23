@@ -1,3 +1,4 @@
+
 # COVID-19 CASE TRACKER
 
 This is a React-based dashboard for monitoring Ethiopia's COVID-19 cases using Google Maps and geographic feature data to model existing confirmed cases and medical facilities by administrative regions.
@@ -18,6 +19,7 @@ In the main directory run:
 
 
 To deploy, run
+
 `npm deploy`
 
 I am pulling data for coronavirus cases and medical facilities from two Google Spreadsheets using Sheetsu. Edit the files in `src/action` to update the endpoint URLS if wanting to pull your own data. I've also included some geographic data in the `src/data` folder for mapping Ethiopia specifically.
@@ -27,12 +29,12 @@ I am pulling data for coronavirus cases and medical facilities from two Google S
 **Article Link:**
 [State warns foreigners 'attacked' in Ethiopia over coronavirus fears](https://bit.ly/396WJXm)
 
-**CURRENTLY LOCATION MARKERS ARE ONLY BEING USED TO INDICATE THE LOCATION OF HOSPITALS/MEDICAL FACILITIES.
+**AS LONG AS YOU DO NOT MISUSE THIS APPLICATION IN THIS WAY YOU ARE FREE TO USE THIS SOFTWARE.**
 
-AS LONG AS YOU DO NOT MISUSE THIS APPLICATION IN THIS WAY YOU ARE FREE TO USE THIS SOFTWARE.**
+**CURRENTLY LOCATION MARKERS ARE ONLY BEING USED TO INDICATE THE LOCATION OF HOSPITALS/MEDICAL FACILITIES.**
 
 ## Expanding
-Although this dashboard is centered on tracking COVID-19 in Ethiopia one could easily recenter the map anywhere and update the GeoJson file to make this a general purpose COVID-19 tracker for any region powered with Google Maps. All you need is a GeoJson file of your desired region and a unique ID number for each administrative region (0, 1, 2, & 3) and make sure your recorded confirmed cases include the region's ID as a property. Only one administrative region is used in this project (Admin Region 3) but you can update that accordingly in the code with additional files to change the scope of the observed region.
+Although this dashboard is centered on tracking COVID-19 in Ethiopia one could easily recenter the map anywhere and update the GeoJson file to make this a general purpose COVID-19 tracker for any region powered with Google Maps. All you need is a GeoJson file of your desired region and a unique ID number for each administrative region and make sure your recorded cases include a region ID as a property. Only one administrative region is used in this project (Admin Region 3) but you can update that accordingly in the code with additional files to change the scope of the observed region. The same applies for the medical facililties data.
 
 You can use the following example tables/columns linked below. Copy the column headers and connect them via a service like Sheetsu or the Google Sheets API to send your data to the map to begin tracking immediately. Some empty columns may be included since these data were pulled as a subset from OCHA Humanitarian data exchange records from larger tables.
 
