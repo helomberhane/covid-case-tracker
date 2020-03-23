@@ -7,6 +7,7 @@ import _forEach from 'lodash/forEach'
 import _filter from 'lodash/filter'
 import _find from 'lodash/find'
 import _orderBy from 'lodash/orderBy'
+import API, { graphqlOperation } from '@aws-amplify/api';
 
 import administrativeZoneDataAll from '../../data/ethiopia_administrative_zones_full.json'
 
@@ -97,6 +98,20 @@ class Home extends Component {
     clearCurrentRegionRecord()
     getCaseRecords()
     getMedicalFacilityRecords()
+
+    let apiName = 'test';
+    let path = '/items';
+    let myInit = { // OPTIONAL
+        headers: {}, // OPTIONAL
+        response: true,
+    }
+
+    API.get(apiName, path, myInit).then(response => {
+        // Add your code here
+        console.log(response);
+    }).catch(error => {
+        console.log(error.response)
+    });
   }
   showRegionDetails(regionId) {
     const { setCurrentRegionRecord } = this.props

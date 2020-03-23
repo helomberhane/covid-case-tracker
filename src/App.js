@@ -1,10 +1,19 @@
 import React from 'react'
 import { BrowserRouter as Router, Route } from "react-router-dom"
 
+// AWS test
+import Amplify, { API } from '@aws-amplify/api'
+import awsconfig from './aws-exports';
+
 import { Provider } from 'react-redux'
 import store from './reducers/store'
 
 import Home from './components/LandingPage/Home'
+
+
+
+Amplify.configure(awsconfig);
+
 
 function App() {
   return (
