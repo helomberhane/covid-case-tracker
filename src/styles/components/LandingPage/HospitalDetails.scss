@@ -1,0 +1,47 @@
+.hospital_details__faciliy_type_header {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.hospital_details__status {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.hospital_details__available_beds {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.hospital_details__address_street, .hospital_details__hours, .hospital_details__operator {
+  font-size: 12px;
+  margin: 0px 0px 4px 0px;
+}
+
+.hospital_details__address_city_state {
+  margin-bottom: 10px;
+}
+
+.hospital_details__status_available {
+  color: #228b22;
+}
+
+.hospital_details__status_unavailable {
+  color: grey;
+}
+
+.hospital_details__status_full {
+  color: #ff0000;
+}
+
+.hospital_details__available_beds_great {
+  color: #228b22;
+}
+
+.hospital_details__available_beds_good {
+  color: #ff8000;
+}
+
+.hospital_details__available_beds_bad {
+  color: #ff0000;
+}

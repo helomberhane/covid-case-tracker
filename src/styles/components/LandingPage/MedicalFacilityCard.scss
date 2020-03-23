@@ -1,0 +1,74 @@
+.medical_facility_card__name {
+  padding: 10px 0px 0px 10px;
+}
+
+.medical_facility_card__table_container {
+  width: 100%;
+  padding-bottom: 28px;
+}
+
+.medical_facility_card__table {
+  height: 100%;
+  width: 100%;
+
+  th {
+    border: 1px solid lightgray;
+    padding-left: 10px;
+    font-size: 14px;
+  }
+
+  tr {
+    border: 1px solid lightgray;
+    font-size: 14px;
+  }
+
+  td {
+    border: 1px solid lightgray;
+    padding-left: 10px;
+    font-size: 14px;
+  }
+}
+
+.medical_facility_card__total_case_table_row {
+  border-top: 2px solid black !important;
+}
+
+.medical_facility_card__total_case_table_entry {
+  font-weight: 600;
+}
+
+.medical_facility_card__available_beds_great {
+  color: #228b22;
+}
+
+.medical_facility_card__available_beds_good {
+  color: #ff8000;
+}
+
+.medical_facility_card__available_beds_bad {
+  color: #ff0000;
+}
+
+.medical_facility_card__status_available {
+  color: #228b22;
+}
+
+.medical_facility_card__status_full {
+  color: #ff0000;
+}
+
+.medical_facility_card__status_unavailable {
+  color: grey;
+}
+
+.medical_facility_card__great {
+  color: #228b22;
+}
+
+.medical_facility_card__good {
+  color: #ff8000;
+}
+
+.medical_facility_card__bad {
+  color: #ff0000;
+}

@@ -1,0 +1,81 @@
+.total_cases_panel___value {
+  margin: 2px 0px 8px 2px;
+}
+
+.total_cases_panel___total_cases_container {
+  background-color: rgba(255, 0, 0, 0.4);
+  border: 1px solid black;
+  height: 52px;
+  margin-bottom: 20px;
+  padding: 10px 6px 0px 6px;
+}
+
+.total_cases_panel___total_header_container {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid black;
+}
+
+.total_cases_panel___total_cases_header {
+  font-size: 24px;
+}
+
+.total_cases_panel___total_cases_value {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.total_cases_panel___header {
+  font-size: 24px;
+}
+
+.total_cases_panel___total_recovered_header {
+  color: #228b22;
+}
+
+.total_cases_panel___total_hospitalized_header {
+  color: #ff8000;
+}
+
+.total_cases_panel___total_isolated_header {
+  color: grey;
+}
+
+.total_cases_panel___total_deceased_header {
+  color: #ff0000;
+}
+
+.total_cases_panel___table_container_header {
+  padding-top: 10px;
+}
+
+.total_cases_panel___table_container {
+  border: 1px solid lightgray;
+  height: 240px;
+  overflow-y: scroll;
+}
+
+.total_cases_panel___table {
+  height: 100%;
+  overflow-y: scroll;
+  width: 100%;
+
+  th {
+    border: 1px solid lightgray;
+    padding-left: 10px;
+  }
+
+  tr {
+    border: 1px solid lightgray;
+  }
+
+  td {
+    border: 1px solid lightgray;
+    padding-left: 10px;
+  }
+}
+
+#root > div > div > div:nth-child(3) > div.map___container > div > div > div > div:nth-child(11) > div:nth-child(1) > div:nth-child(1) {
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 0px -1px;
+  border-bottom: 0px;
+}
