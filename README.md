@@ -11,6 +11,8 @@ Next, clone/download the project and in the main directory create a file called 
 
 https://gist.github.com/helomberhane/2da30ae2cf61df2b2d656c316fb05205
 
+
+
 Simply replace `YOUR_GOOGLE_MAPS_API_KEY` with your key. Do not share your Google Maps key or push it up publicly.
 
 In the main directory run:
@@ -24,6 +26,8 @@ To deploy, run
 
 `npm deploy`
 
+
+
 I am pulling data for coronavirus cases and medical facilities from two Google Spreadsheets using Sheetsu. Edit the files in `src/action` to update the endpoint URLS if wanting to pull your own data. I've also included some geographic data in the `src/data` folder for mapping Ethiopia specifically.
 
 **DO NOT DISPLAY LATITUDE/LONGITUDE COORDINATES, LOCATION PINS, PRECISE LOCATION MARKERS, OR ANY PERSONALLY IDENTIFIABLE INFORMATION FOR CORONAVIRUS CASES ANYWHERE ON THE MAP OR ENTIRE WEBSITE, REGARDLESS IF THEY CONFIRMED OR UNCONFIRMED OR SELF-REPORTED. THERE ARE REPORTS OF PEOPLE BEING ATTACKED FOR SUSPICIONS OF HAVING CORONAVIRUS AND YOU COULD POTENTIALLY ENDANGER THEIR LIVES. FOR THAT REASON I’M AGGREGATING CASES BY REGION.**
@@ -34,6 +38,8 @@ I am pulling data for coronavirus cases and medical facilities from two Google S
 **AS LONG AS YOU DO NOT MISUSE THIS APPLICATION IN THIS WAY YOU ARE FREE TO USE THIS SOFTWARE.**
 
 **CURRENTLY LOCATION MARKERS ARE ONLY BEING USED TO INDICATE THE LOCATION OF HOSPITALS/MEDICAL FACILITIES.**
+
+
 
 ## Expanding
 Although this dashboard is centered on tracking COVID-19 in Ethiopia one could easily recenter the map anywhere and update the GeoJson file to make this a general purpose COVID-19 tracker for any region powered with Google Maps. All you need is a GeoJson file of your desired region and a unique ID number for each administrative region and make sure your recorded cases include a region ID as a property. Only one administrative region is used in this project (Admin Region 3) but you can update that accordingly in the code with additional files to change the scope of the observed region. The same applies for the medical facililties data.
