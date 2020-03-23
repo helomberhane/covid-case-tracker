@@ -7,6 +7,8 @@ To get started, first you'll need to obtain a Google Maps API Key.
 [How to get a Google Maps Key](https://developers.google.com/maps/documentation/javascript/get-api-key)
 
 Next, clone/download the project and in the main directory create a file called `.env`  to store the Google Maps API key like in the link below.
+
+
 https://gist.github.com/helomberhane/2da30ae2cf61df2b2d656c316fb05205
 
 Simply replace `YOUR_GOOGLE_MAPS_API_KEY` with your key. Do not share your Google Maps key or push it up publicly.
