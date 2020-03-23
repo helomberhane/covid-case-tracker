@@ -2,12 +2,15 @@ import {
   GET_CASE_RECORDS_REQUEST,
   GET_CASE_RECORDS_SUCCESS,
   GET_CASE_RECORDS_FAILURE,
+  SET_CURRENT_REGION_RECORD,
+  CLEAR_CURRENT_REGION_RECORD,
 } from '../actions/caseRecords'
 import _map from 'lodash/map'
 
 export const defaultState = {
   loading: false,
   caseRecords: [],
+  currentRegionRecord: null,
 }
 
 export default (state = defaultState, action) => {
@@ -27,6 +30,14 @@ export default (state = defaultState, action) => {
 
     case GET_CASE_RECORDS_FAILURE:
       newState.loading = false
+      return newState
+
+    case SET_CURRENT_REGION_RECORD:
+      newState.currentRegionRecord = action.payload
+      return newState
+
+    case CLEAR_CURRENT_REGION_RECORD:
+      newState.currentRegionRecord = null
       return newState
 
     default:

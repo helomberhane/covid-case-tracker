@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
-import auth from './auth'
 import caseRecords from './caseRecords'
+import medicalFacilityRecords from './medicalFacilityRecords'
 
 const rootReducer = combineReducers({
-  auth,
   caseRecords,
+  medicalFacilityRecords,
 })
 
 export default rootReducer;

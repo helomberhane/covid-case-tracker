@@ -1,68 +1,45 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# COVID-19 CASE TRACKER
 
-## Available Scripts
+This is a React-based dashboard for monitoring Ethiopia's COVID-19 cases using Google Maps and geographic feature data to model existing confirmed cases and medical facilities by administrative regions.
 
-In the project directory, you can run:
+To get started, first you'll need to obtain a Google Maps API Key.
+[How to get a Google Maps Key](https://developers.google.com/maps/documentation/javascript/get-api-key)
 
-### `npm start`
+Next, clone/download the project and in the main directory create a file called `.env`  to store the Google Maps API key like in the link below.
+https://gist.github.com/helomberhane/2da30ae2cf61df2b2d656c316fb05205
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Simply replace `YOUR_GOOGLE_MAPS_API_KEY` with your key. Do not share your Google Maps key or push it up publicly.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+In the main directory run:
 
-### `npm test`
+`npm install`
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+`npm start`
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To deploy, run
+`npm deploy`
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+I am pulling data for coronavirus cases and medical facilities from two Google Spreadsheets using Sheetsu. Edit the files in `src/action` to update the endpoint URLS if wanting to pull your own data. I've also included some geographic data in the `src/data` folder for mapping Ethiopia specifically.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**DO NOT DISPLAY LATITUDE/LONGITUDE COORDINATES, LOCATION PINS, PRECISE LOCATION MARKERS, OR ANY PERSONALLY IDENTIFIABLE INFORMATION FOR CORONAVIRUS CASES ANYWHERE ON THE MAP OR ENTIRE WEBSITE, REGARDLESS IF THEY CONFIRMED OR UNCONFIRMED OR SELF-REPORTED. THERE ARE REPORTS OF PEOPLE BEING ATTACKED FOR SUSPICIONS OF HAVING CORONAVIRUS AND YOU COULD POTENTIALLY ENDANGER THEIR LIVES. FOR THAT REASON I’M AGGREGATING CASES BY REGION.**
 
-### `npm run eject`
+**Article Link:**
+[State warns foreigners 'attacked' in Ethiopia over coronavirus fears](https://bit.ly/396WJXm)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+**CURRENTLY LOCATION MARKERS ARE ONLY BEING USED TO INDICATE THE LOCATION OF HOSPITALS/MEDICAL FACILITIES.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+AS LONG AS YOU DO NOT MISUSE THIS APPLICATION IN THIS WAY YOU ARE FREE TO USE THIS SOFTWARE.**
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Expanding
+Although this dashboard is centered on tracking COVID-19 in Ethiopia one could easily recenter the map anywhere and update the GeoJson file to make this a general purpose COVID-19 tracker for any region powered with Google Maps. All you need is a GeoJson file of your desired region and a unique ID number for each administrative region (0, 1, 2, & 3) and make sure your recorded confirmed cases include the region's ID as a property. Only one administrative region is used in this project (Admin Region 3) but you can update that accordingly in the code with additional files to change the scope of the observed region.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+You can use the following example tables/columns linked below. Copy the column headers and connect them via a service like Sheetsu or the Google Sheets API to send your data to the map to begin tracking immediately. Some empty columns may be included since these data were pulled as a subset from OCHA Humanitarian data exchange records from larger tables.
 
-## Learn More
+Feel free to fork and submit pull requests for improvements.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Coronavirus Case Tracker Spreadsheet
+https://docs.google.com/spreadsheets/d/1qI_Hag8ANEzVJZ1fRAVSODHkRU8KfWGBoCT3tb0Dmvw/edit?usp=sharing
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Medical Facilities Tracker Spreadsheet
+https://docs.google.com/spreadsheets/d/1Baiu0pMGf00zb1GDqlu9cYjWjSxGb7Ovctii6JkwlDA/edit?usp=sharing

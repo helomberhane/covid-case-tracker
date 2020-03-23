@@ -1,8 +1,12 @@
 @import './components/App';
-@import './components/LandingPage/Header';
+@import './components/LandingPage/Home';
 @import './components/LandingPage/DataPanel';
 @import './components/LandingPage/Map';
 @import './components/LandingPage/RegionDetails';
+@import './components/LandingPage/HospitalDetails';
+@import './components/LandingPage/TotalCasesPanel';
+@import './components/LandingPage/MedicalFacilitiesPanel';
+@import './components/LandingPage/MedicalFacilityCard';
 
 body {
   margin: 0;

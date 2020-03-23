@@ -1,3 +1,7 @@
+.data_panel___row_container {
+  position: relative;
+}
+
 .data_panel___container {
   background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -7,6 +11,58 @@
   position:fixed;
   z-index: 1;
   padding: 0px 24px;
+}
+
+.data_panel___tabs_container {
+  background-color: white;
+  width: 300px;
+  height: 50px;
+  right: 0px;
+  top: -50px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.data_panel___tab {
+  cursor: pointer;
+  height: 50px;
+  text-align: center;
+  padding-top: 12px;
+
+  a {
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  a:visited {
+    text-decoration: none;
+  }
+}
+
+.data_panel___tab_active {
+  border-top: 3px solid #228b22;
+
+  a {
+    font-weight: 600;
+    color: #228b22;
+    text-decoration: none;
+  }
+
+  a:visited {
+    color: #228b22;
+    text-decoration: none;
+  }
+}
+
+.data_panel___tab_link {
+  font-size: 18px;
+}
+
+.data_panel___tabs_shadow_cutoff_container {
+  position: absolute;
+  right: 0px;
+  top: -50px;
+  height: 50px;
+  overflow: hidden;
 }
 
 .data_panel___main_header {
@@ -20,86 +76,4 @@
   margin: 0px;
   font-size: 20px;
   text-align: left;
-}
-
-.data_panel___value {
-  margin: 2px 0px 8px 2px;
-}
-
-.data_panel___total_cases_container {
-  background-color: rgba(255, 0, 0, 0.4);
-  border: 1px solid black;
-  height: 52px;
-  margin-bottom: 20px;
-  padding: 10px 6px 0px 6px;
-}
-
-.data_panel___total_header_container {
-  margin-top: 10px;
-  padding-top: 8px;
-  border-top: 1px solid black;
-}
-
-.data_panel___total_cases_header {
-  font-size: 24px;
-}
-
-.data_panel___total_cases_value {
-  font-size: 24px;
-  font-weight: 600;
-}
-
-.data_panel___total_cases_header {
-  font-size: 24px;
-}
-
-.data_panel___total_recovered_header {
-  color: #228b22;
-}
-
-.data_panel___total_hospitalized_header {
-  color: #ff8000;
-}
-
-.data_panel___total_isolated_header {
-  color: grey;
-}
-
-.data_panel___total_deceased_header {
-  color: #ff0000;
-}
-
-.data_panel___table_container_header {
-  padding-top: 20px;
-}
-
-.data_panel___table_container {
-  height: 271px;
-  overflow-y: scroll;
-}
-
-.data_panel___table {
-  height: 100%;
-  overflow-y: scroll;
-  width: 100%;
-  border: 1px solid lightgray;
-
-  th {
-    border: 1px solid lightgray;
-    padding-left: 10px;
-  }
-
-  tr {
-    border: 1px solid lightgray;
-  }
-
-  td {
-    border: 1px solid lightgray;
-    padding-left: 10px;
-  }
-}
-
-#root > div > div > div:nth-child(3) > div.map___container > div > div > div > div:nth-child(11) > div:nth-child(1) > div:nth-child(1) {
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 0px -1px;
-  border-bottom: 0px;
 }

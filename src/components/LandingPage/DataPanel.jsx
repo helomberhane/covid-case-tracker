@@ -1,142 +1,143 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { Row, Col } from 'react-bootstrap'
-import { bindActionCreators } from 'redux'
 import classNames from 'classnames'
-import _map from 'lodash/map'
-import moment from 'moment'
 
+import TotalCasesPanel from './TotalCasesPanel'
+import MedicalFacilitiesPanel from './MedicalFacilitiesPanel'
+import NewPanel from './NewPanel'
 
-class DataPanel extends Component {
+const TOTAL_CASES_TAB = "totalCases"
+const MEDICAL_FACILITIES_TAB = "medicalFacilities"
+const NEW_TAB = "new"
+
+export default class DataPanel extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      currentTab: TOTAL_CASES_TAB,
+    }
+
+    this.showPanel = this.showPanel.bind(this)
+  }
+  showPanel(panelName) {
+    this.setState({
+      currentTab: panelName,
+    })
+  }
   render() {
-    const { loading, totalCount, totalCaseRecordsRecovered, totalCaseRecordsHospitalized, totalCaseRecordsIsolated, totalCaseRecordsDeceased, topFiveRegions } = this.props
+    const {
+      loadingCaseRecords,
+      loadingMedicalFacilityRecords,
+      totalCount,
+      totalCaseRecordsRecovered,
+      totalCaseRecordsHospitalized,
+      totalCaseRecordsIsolated,
+      totalCaseRecordsDeceased,
+      topFiveRegions,
+    } = this.props
 
-    const totalCasesHeaderClasses = classNames({
-        'data_panel___header': true,
-        'data_panel___total_cases_header': true,
+    const tabOneClasses = classNames({
+        'data_panel___tab': true,
+        'data_panel___tab_active': (this.state.currentTab === TOTAL_CASES_TAB),
     })
 
-    const totalRecoveredHeaderClasses = classNames({
-        'data_panel___header': true,
-        'data_panel___total_recovered_header': true,
+    const tabTwoClasses = classNames({
+        'data_panel___tab': true,
+        'data_panel___tab_active': (this.state.currentTab === MEDICAL_FACILITIES_TAB),
     })
 
-    const totalHospitalizedHeaderClasses = classNames({
-        'data_panel___header': true,
-        'data_panel___total_hospitalized_header': true,
+    const tabThreeClasses = classNames({
+        'data_panel___tab': true,
+        'data_panel___tab_active': (this.state.currentTab === NEW_TAB),
     })
 
-    const totalIsolatedHeaderClasses = classNames({
-        'data_panel___header': true,
-        'data_panel___total_isolated_header': true,
-    })
+    const finishedLoadingCaseRecords = loadingCaseRecords && (loadingCaseRecords === true)
+    const finishedLoadingMedicalFacilityRecords = loadingMedicalFacilityRecords && (loadingMedicalFacilityRecords === true)
 
-    const totalDeceasedHeaderClasses = classNames({
-        'data_panel___header': true,
-        'data_panel___total_deceased_header': true,
-    })
+    // Logic for choosing panel
+    var currentPanel = ''
+    if (this.state.currentTab === TOTAL_CASES_TAB) {
+      if (finishedLoadingCaseRecords) {
+        currentPanel = (
+          <p>Loading...</p>
+        )
+      } else {
+        currentPanel = (
+          <TotalCasesPanel
+            totalCount={totalCount}
+            totalCaseRecordsRecovered={totalCaseRecordsRecovered}
+            totalCaseRecordsHospitalized={totalCaseRecordsHospitalized}
+            totalCaseRecordsIsolated={totalCaseRecordsIsolated}
+            totalCaseRecordsDeceased={totalCaseRecordsDeceased}
+            topFiveRegions={topFiveRegions}
+          />
+        )
+      }
+    }
 
-    const topRegions = _map(topFiveRegions, (regionRecord, index) => {
-      return (
-        <tr key={index}>
-          <td className="data_panel___table_row">{ regionRecord.name }</td>
-          <td className="data_panel___table_row">{ regionRecord.totalCases }</td>
-          <td className="data_panel___table_row">{ regionRecord.firstCase ? moment(regionRecord.firstCase).format("MM/DD/YYYY") : "N/A" }</td>
-        </tr>
+    if (this.state.currentTab === MEDICAL_FACILITIES_TAB) {
+      if (
+        finishedLoadingCaseRecords &&
+        finishedLoadingMedicalFacilityRecords &&
+        totalCount
       )
-    })
+      {
+        currentPanel = (
+          <p>Loading...</p>
+        )
+      } else {
+        currentPanel = (
+          <MedicalFacilitiesPanel
+            totalCount={totalCount}
+          />
+        )
+      }
+    }
+
+
+    // Update accordingly with your data loading
+    if (this.state.currentTab === NEW_TAB) {
+      if (finishedLoadingCaseRecords && finishedLoadingMedicalFacilityRecords) {
+        currentPanel = (
+          <p>Loading...</p>
+        )
+      } else {
+        currentPanel = (
+          <NewPanel
+          />
+        )
+      }
+    }
 
     return (
-      <Row>
+      <Row className="data_panel___row_container">
         <Col xs={4} className="data_panel___container">
-          <h1 className="data_panel___main_header">Ethiopia COVID-19 Tracker</h1>
-          {
-            loading && (loading === true) ?
-              <p>Loading...</p>
-            :
-              (
-                <div>
-                  <div className="data_panel___total_cases_container">
-                    <Row>
-                      <Col xs={8}>
-                        <h3 className={totalCasesHeaderClasses}>Total Confirmed Cases</h3>
-                      </Col>
-                      <Col xs={4}>
-                        <h3 className="data_panel___total_cases_value">{ totalCount }</h3>
-                      </Col>
-                    </Row>
+        <div className="data_panel___tabs_shadow_cutoff_container">
+            <div className="data_panel___tabs_container">
+              <Row>
+                <Col xs={4}>
+                  <div className={tabOneClasses}>
+                    <p className="data_panel___tab_link" onClick={(e) => this.showPanel(TOTAL_CASES_TAB, e)}>Cases</p>
                   </div>
-                  <Row>
-                    <Col xs={8}>
-                      <h3 className={totalRecoveredHeaderClasses}>Total Recovered</h3>
-                    </Col>
-                    <Col xs={4}>
-                      <p className="data_panel___value">{ totalCaseRecordsRecovered }</p>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col xs={8}>
-                      <h3 className={totalHospitalizedHeaderClasses}>Total Hospitalized</h3>
-                    </Col>
-                    <Col xs={4}>
-                      <p className="data_panel___value">{ totalCaseRecordsHospitalized }</p>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col xs={8}>
-                      <h3 className={totalIsolatedHeaderClasses}>Total Isolated</h3>
-                    </Col>
-                    <Col xs={4}>
-                      <p className="data_panel___value">{ totalCaseRecordsIsolated }</p>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col xs={8}>
-                      <h3 className={totalDeceasedHeaderClasses}>Total Deceased</h3>
-                    </Col>
-                    <Col xs={4}>
-                      <p className="data_panel___value">{ totalCaseRecordsDeceased }</p>
-                    </Col>
-                  </Row>
-                  <Row className="data_panel___total_header_container">
-                    <Col xs={8}>
-                      <h3 className="data_panel___header">Total</h3>
-                    </Col>
-                    <Col xs={4}>
-                      <p className="data_panel___value"><strong>{ totalCount }</strong></p>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col xs={12}>
-                      <h3 className="data_panel___table_container_header">Most Affected Regions</h3>
-                      <div className="data_panel___table_container">
-                        <table className="data_panel___table">
-                          <thead>
-                            <tr>
-                              <th className="data_panel___table_header">Woreda</th>
-                              <th className="data_panel___table_header">Cases</th>
-                              <th className="data_panel___table_header">First Case</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            { topRegions }
-                          </tbody>
-                        </table>
-                      </div>
-                    </Col>
-                  </Row>
-              </div>
-            )
-          }
+                </Col>
+                <Col xs={4}>
+                  <div className={tabTwoClasses}>
+                    <p className="data_panel___tab_link" onClick={(e) => this.showPanel(MEDICAL_FACILITIES_TAB, e)}>Facilities</p>
+                  </div>
+                </Col>
+                <Col xs={4}>
+                  <div className={tabThreeClasses}>
+                    <p className="data_panel___tab_link" onClick={(e) => this.showPanel(NEW_TAB, e)}>New</p>
+                  </div>
+                </Col>
+              </Row>
+            </div>
+          </div>
+          <h1 className="data_panel___main_header">Ethiopia COVID-19 Case Tracker</h1>
+          { currentPanel }
         </Col>
       </Row>
     )
   }
 }
-
-export default connect(
-  state => ({
-  }),
-  dispatch => bindActionCreators({
-  }, dispatch),
-)(DataPanel)

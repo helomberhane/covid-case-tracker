@@ -3,7 +3,7 @@ import { Map, GoogleApiWrapper } from 'google-maps-react'
 
 export class MapContainer extends Component {
   render() {
-    const { centerCoordinates, polygons } = this.props
+    const { centerCoordinates, polygons, markers, infoWindows } = this.props
 
     return (
       <Map
@@ -13,6 +13,8 @@ export class MapContainer extends Component {
         zoom={6.52}
       >
         { polygons }
+        { markers }
+        { infoWindows }
       </Map>
     );
   }

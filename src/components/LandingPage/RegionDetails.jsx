@@ -12,7 +12,7 @@ class RegionDetails extends Component {
         <Col xs={3} className="region_details___container">
           <Row>
             <Col xs={12}>
-              <h2 className="region_details__name_header">{ regionRecord.name }</h2>
+              <h2 className="region_details__name_header">{ regionRecord.name } <span className="region_details__region_id">ID: { regionRecord.adminRegion3Id }</span></h2>
             </Col>
           </Row>
           <Row>
