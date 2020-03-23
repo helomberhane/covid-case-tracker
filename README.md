@@ -22,9 +22,9 @@ In the main directory run:
 `npm start`
 
 
-To deploy, run
+To build for deployment, run:
 
-`npm deploy`
+`npm run build`
 
 
 
