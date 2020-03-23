@@ -15,15 +15,16 @@ https://gist.github.com/helomberhane/2da30ae2cf61df2b2d656c316fb05205
 
 Simply replace `YOUR_GOOGLE_MAPS_API_KEY` with your key. Do not share your Google Maps key or push it up publicly.
 
-In the main directory run:
+In the main directory, run the following to install all the necessary dependencies (you only have to do this once):
 
 `npm install`
 
+
+Then whenever you want to run the project, execute:
 `npm start`
 
 
 To build for deployment, run:
-
 `npm run build`
 
 
