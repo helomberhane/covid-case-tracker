@@ -100,6 +100,7 @@ class Home extends Component {
     getCaseRecords()
     getMedicalFacilityRecords()
 
+    // Cognito code
     let username = "admin"
     let password = "Ethiopia!123"
 
