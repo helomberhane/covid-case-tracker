@@ -7,7 +7,7 @@ import _forEach from 'lodash/forEach'
 import _filter from 'lodash/filter'
 import _find from 'lodash/find'
 import _orderBy from 'lodash/orderBy'
-import API, { graphqlOperation } from '@aws-amplify/api';
+import { Auth } from 'aws-amplify';
 
 import administrativeZoneDataAll from '../../data/ethiopia_administrative_zones_full.json'
 
@@ -77,6 +77,7 @@ const regionOverlayRecords = _map(administrativeZoneDataAll[0].features, (data, 
   return { adminRegion3Id: data.properties.ID_3, key: index, paths: formattedCoordinates, strokeColor: "#000000", strokeWeight: 2, fillColor: POLYGON_COLORS[1], fillOpacity: 0.45 }
 })
 
+
 class Home extends Component {
   constructor(props) {
     super(props)
@@ -99,19 +100,12 @@ class Home extends Component {
     getCaseRecords()
     getMedicalFacilityRecords()
 
-    let apiName = 'test';
-    let path = '/items';
-    let myInit = { // OPTIONAL
-        headers: {}, // OPTIONAL
-        response: true,
-    }
+    let username = "admin"
+    let password = "Ethiopia!123"
 
-    API.get(apiName, path, myInit).then(response => {
-        // Add your code here
-        console.log(response);
-    }).catch(error => {
-        console.log(error.response)
-    });
+    Auth.signIn(username, password)
+    .then(user => console.log(user))
+    .catch(err => console.log(err));
   }
   showRegionDetails(regionId) {
     const { setCurrentRegionRecord } = this.props
